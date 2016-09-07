@@ -4,7 +4,7 @@
 说明：前段时间，工作上需要把添加多语言，添加西班牙语。公司的这套code，在Web上多语言写的有点费事。
 语言文件是是不同的页面加载不同的.js.
 其实就是一个文本文件，里面的内容类似如下：
-```
+```JavaScript
 LangM.push({
 	'bt_hlp1':'Table of Contents',
 	'bt_hlp2':'Status',
