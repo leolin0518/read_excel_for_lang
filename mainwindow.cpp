@@ -32,6 +32,7 @@ void MainWindow::init()
       ui->tabWidget->setCurrentWidget(ui->tab_1);
       ui->xuhao_lastlineEdit->hide();
       ui->xuhao_prelineEdit->hide();
+      ui->xuhao_label->hide();
 
 }
 
@@ -208,13 +209,28 @@ void MainWindow::on_pushButton_checkprint_clicked()
 
     QString duan_wei = ui->textEdit_4->toPlainText();
     qDebug() << "duan_wei:" << duan_wei;
+    QString print_demo;
+    if(ui->xuhao_checkBox->isChecked())
+    {
+        QString print_line1 =  hang_shou + "单元内容" + hang_wei ;
+        QString print_line2 =  hang_shou + "单元内容" + hang_wei ;
+        QString xuhao1 =  ui->xuhao_prelineEdit->text() + "序号1" + ui->xuhao_lastlineEdit->text() ;
+        QString xuhao2 =  ui->xuhao_prelineEdit->text() + "序号2" + ui->xuhao_lastlineEdit->text() ;
+        print_demo = duan_shou + '\n' +
+                                "          " + xuhao1 + "  " + print_line1 + '\n' +
+                                "          " + xuhao2 + "  " + print_line2 + '\n' +
+                             duan_wei;
+    }else{
 
-    QString print_line1 =  hang_shou + "excel_cell_value(DEMO)" + hang_wei ;
-    QString print_line2 =  hang_shou + "excel_cell_value(DEMO)" + hang_wei ;
-    QString print_demo = duan_shou + '\n' +
-                            "        " + print_line1 + '\n' +
-                            "        " + print_line2 + '\n' +
-                         duan_wei;
+
+        QString print_line1 =  hang_shou + "内容" + hang_wei ;
+        QString print_line2 =  hang_shou + "内容" + hang_wei ;
+        print_demo = duan_shou + '\n' +
+                                "        " + print_line1 + '\n' +
+                                "        " + print_line2 + '\n' +
+                             duan_wei;
+    }
+
     qDebug() << "print_demo:" << print_demo;
 
     ui->textBrowser_print->setText(print_demo);
@@ -282,16 +298,19 @@ void MainWindow::on_xuhao_checkBox_clicked()
 
 }
 
+//设置序号
 void MainWindow::on_xuhao_checkBox_clicked(bool checked)
 {
     if(checked == true)
     {
         ui->xuhao_lastlineEdit->show();
         ui->xuhao_prelineEdit->show();
+        ui->xuhao_label->show();
     }
     if(checked == false)
     {
         ui->xuhao_lastlineEdit->hide();
         ui->xuhao_prelineEdit->hide();
+        ui->xuhao_label->hide();
     }
 }
