@@ -1,0 +1,2 @@
+# read_excel_for_lang
+一个读取excel文档内容，生成自定义的文件的小工具
